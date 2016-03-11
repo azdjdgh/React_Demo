@@ -54,8 +54,21 @@
      </script>
 
 
-
-
+     <div id="test1">
+     </div>
+     <script type="text/jsx">
+        var names=['111','222','333','444'];
+        ReactDOM.render(
+            <div>
+            {
+                names.map(function(name){
+                    return <h2>Name:{name}</h2>;
+                })
+            }
+            </div>,
+            document.getElementById('test1')
+        );
+     </script>
 
     </body>
 </html>

@@ -42,31 +42,18 @@
     
     
     
-    <div id="example2">
-        
+    <div id="test1">
     </div>
     <script type="text/jsx">
-        var ListCompnent=React.createClass({
+        var MyComponent=React.createClass({
             render:function(){
-                return (
-                    <div>
-                    {
-                        React.Children.map(this.props.children,function(child){
-                            return <h1>{child}</h1>;
-                        })
-                    }
-                    </div>
-                );
+                return <h1>{this.props.name}</h1>;
             }
         });
         
-        React.render(
-            <ListCompnent>
-                <h2>12345</h2>
-                <h2>67890</h2>
-                <h2>12345</h2>
-            </ListCompnent>,
-            document.getElementById('example2')
+        ReactDOM.render(
+            <MyComponent name='Test Component'/>,
+            document.getElementById('test1')
         );
     </script>
     </body>

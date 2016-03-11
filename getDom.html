@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <script src="build/JSXTransformer.js"></script>
+    </head>
+    <body>
+    <div id="example">
+        
+    </div>
+    <script type="text/jsx">
+        var MyComponent=React.createClass({
+            handClick:function(){
+                this.refs.myinput.focus();
+            },
+            
+            render:function(){
+                return (
+                    <div>
+                        <input type="text" ref="myinput"/>
+                        <input type="button" value="Focus the text input" onClick={this.handClick}/>
+                    </div>
+                );
+            }
+        });
+        
+        ReactDOM.render(
+            <MyComponent />,
+            document.getElementById('example')
+        );
+    </script>
+    
+    </body>
+</html>

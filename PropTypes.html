@@ -13,16 +13,13 @@
     <script type="text/jsx">
         var data = 123;
         var TitleCompnent=React.createClass({
-            
             propTypes:{
                 title: React.PropTypes.string.isRequired,
             },
-            
             render:function(){
                 return <h2>{this.props.title}</h2>;
             }
         });        
-      
         ReactDOM.render(
             <TitleCompnent title={data}/>,
             document.getElementById('example')
@@ -30,5 +27,46 @@
     </script>
    
    
+    <div id="test1">
+    </div>
+    <script type="text/jsx">
+        var data="ABC";
+        var MyTitle=React.createClass({
+            propTypes:{
+                title: React.PropTypes.string.isRequired,
+            },
+            render:function(){
+                return <h1>{this.props.title}</h1>;
+            }
+        });
+        
+        ReactDOM.render(
+            <MyTitle title={data}/>,
+            document.getElementById('test1')
+        );
+    </script>
+    
+    <div id="defaultProp">
+    </div>
+    <script type="text/jsx">
+        var MyComponent=React.createClass({
+            getDefaultProps:function(){
+              return {
+                  title:'hello,world',
+              };  
+            },
+            
+            render:function(){
+                return <h1>{this.props.title}</h1>;
+            }
+        });
+        
+        ReactDOM.render(
+            <MyComponent />,
+            document.getElementById('defaultProp')
+        );
+    </script>
+    
+    
     </body>
 </html>
