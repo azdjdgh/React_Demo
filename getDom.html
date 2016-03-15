@@ -38,5 +38,31 @@
         );
     </script>
     
+    
+    <div id="test1">
+    </div>
+    <script type="text/jsx">
+        var My_Component=React.createClass({
+            handClick:function(){
+                this.refs.text1.focus();
+                this.refs.text1.value="aaa";
+            },
+            
+            render:function(){
+                return (
+                <div>
+                    <input type="text" ref="text1"/>
+                    <input type="button" value="Click" onClick={this.handClick}/>
+                </div>
+            );
+            }
+        });
+        
+        ReactDOM.render(
+            <My_Component/>,
+            document.getElementById('test1')
+        );
+    </script>
+    
     </body>
 </html>

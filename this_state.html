@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <script src="build/JSXTransformer.js"></script>
+    </head>
+    <body>
+    <div id="example">
+        
+    </div>
+    <!--组件免不了要与用户互动，React 的一大创新，就是将组件看成是一个状态机，一
+    开始有一个初始状态，然后用户互动，导致状态变化，从而触发重新渲染 UI-->
+    <script type="text/jsx">
+        var MyComponent=React.createClass({
+            getInitialState:function(){
+              return {liked:false};  
+            },
+            handClick:function(event){
+                this.setState({liked:!this.state.liked});
+            },
+            render:function(){
+                var text=this.state.liked?'liked':'haven\'t liked';
+                return (
+                    <p onClick={this.handClick}>
+                        you {text} this. Cilck to toggle.
+                    </p>
+                );
+            }
+        });
+        
+        ReactDOM.render(
+            <MyComponent/>,
+            document.getElementById('example')
+        );
+    </script>
+    <!--上面代码是一个 MyComponent 组件，它的 getInitialState 方法用于定义初始状态，也就是一个对象，
+    这个对象可以通过 this.state 属性读取。当用户点击组件，导致状态变化，
+    this.setState 方法就修改状态值，每次修改以后，自动调用 this.render 方法，再次渲染组件。
+    由于 this.props 和 this.state 都用于描述组件的特性，可能会产生混淆。一个简单的区分方法是，
+    this.props 表示那些一旦定义，就不再改变的特性，而 this.state 是会随着用户互动而产生变化的特性-->
+    
+    
+    <div id="test1">
+    </div>
+    <script type="text/jsx">
+        var MyInput=React.createClass({
+            getInitialState:function(){
+              return {value:"hello"};  
+            },
+            handClick:function(event){
+                this.setState({value:event.target.value});
+            },
+            render:function(){
+                return(
+                    <div>
+                        <input type="text" value={this.state.value} onChange={this.handClick}/>
+                        <p>{this.state.value}</p>
+                    </div>
+                );
+            }
+        });
+        
+        ReactDOM.render(
+            <MyInput/>,
+            document.getElementById('test1')
+        );
+    </script>
+        
+    
+    
+    <div id="test2">
+    </div>
+    <script type="text/jsx">
+        var MyInputComponent=React.createClass({
+            getInitialState:function(){
+              return{myvalue:"abc"};  
+            },
+            handClick:function(){
+              this.setState({myvalue:this.refs.myinput.value});  
+            },
+            render:function(){
+                return (
+                    <div>
+                        <input type="text" ref="myinput"/>
+                        <input type="button" value="buttonClick" onClick={this.handClick} />
+                        <p>{this.state.myvalue}</p>
+                    </div>
+                );
+            }
+        });
+    
+        ReactDOM.render(
+            <MyInputComponent/>,
+            document.getElementById('test2')
+        );
+    </script>
+    
+    
+    
+    </body>
+</html>
